@@ -1,22 +1,22 @@
 name: Java Mocking Example
 
 on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-        - uses: actions/checkout@v3
-        - name: Set up JDK 21
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-            java-version: '19'
-            distribution: 'temurin'
-            cache: maven
-        - name: Build with Maven
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
         run: mvn -B test --file pom.xml
