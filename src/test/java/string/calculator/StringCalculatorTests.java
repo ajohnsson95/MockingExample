@@ -23,4 +23,12 @@ public class StringCalculatorTests {
     void testAddTwoNumbers() {
         assertEquals(8, StringCalculator.add("3,5"));
     }
+
+    @Test
+    @DisplayName("test add multiple numbers")
+    void testAddMultipleNumbers() {
+        assertEquals(12, StringCalculator.add("4,6,2"));
+        assertEquals(10, StringCalculator.add("6,2,1,1"));
+        assertEquals(19, StringCalculator.add("5,4,3,2,5"));
+    }
 }
