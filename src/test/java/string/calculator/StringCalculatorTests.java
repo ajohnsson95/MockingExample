@@ -1,6 +1,7 @@
 package string.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -47,5 +48,23 @@ public class StringCalculatorTests {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
         assertEquals(6, StringCalculator.add("//|\n1|2|3"));
         assertEquals(10, StringCalculator.add("//*\n1*2*3*4"));
+    }
+
+    @Test
+    @DisplayName("test throw exception with negative number")
+    void testThrowExceptionWithNegativeNumber() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            StringCalculator.add("1,-2");
+        });
+        assertEquals("negatives are not allowed: [-2]", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("test throw exception with multiple negative numbers")
+    void testThrowExceptionWithMultipleNegativeNumbers() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            StringCalculator.add("-1,2,-3");
+        });
+        assertEquals("negatives are not allowed: [-1, -3]", exception.getMessage());
     }
 }
