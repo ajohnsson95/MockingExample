@@ -3,7 +3,6 @@ package string.calculator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -66,5 +65,12 @@ public class StringCalculatorTests {
             StringCalculator.add("-1,2,-3");
         });
         assertEquals("negatives are not allowed: [-1, -3]", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("test adding number greater or equal to 1000 should be ignored")
+    void testAddingNumberGreaterOrEqualTo1000ShouldBeIgnored() {
+        assertEquals(2, StringCalculator.add("2,1001"));
+        assertEquals(8, StringCalculator.add("5,1001,1000,3"));
     }
 }
