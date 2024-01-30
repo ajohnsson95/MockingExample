@@ -31,4 +31,11 @@ public class StringCalculatorTests {
         assertEquals(10, StringCalculator.add("6,2,1,1"));
         assertEquals(19, StringCalculator.add("5,4,3,2,5"));
     }
+
+    @Test
+    @DisplayName("test add numbers with new line")
+    void testAddNumbersWithNewLine() {
+        assertEquals(10, StringCalculator.add("1\n7,2"));
+        assertEquals(20, StringCalculator.add("1\n7,2\n5,5"));
+    }
 }
