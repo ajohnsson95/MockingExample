@@ -2,10 +2,12 @@ package string.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringCalculatorTests {
+   
     @Test
     @DisplayName("test Add Empty String")
     void testAddEmptyString() {
@@ -37,5 +39,13 @@ public class StringCalculatorTests {
     void testAddNumbersWithNewLine() {
         assertEquals(10, StringCalculator.add("1\n7,2"));
         assertEquals(20, StringCalculator.add("1\n7,2\n5,5"));
+    }
+
+    @Test
+    @DisplayName("test add numbers with custom delimiter")
+    void testAddNumbersWithCustomDelimiter() {
+        assertEquals(3, StringCalculator.add("//;\n1;2"));
+        assertEquals(6, StringCalculator.add("//|\n1|2|3"));
+        assertEquals(10, StringCalculator.add("//*\n1*2*3*4"));
     }
 }
