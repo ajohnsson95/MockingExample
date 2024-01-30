@@ -73,4 +73,10 @@ public class StringCalculatorTests {
         assertEquals(2, StringCalculator.add("2,1001"));
         assertEquals(8, StringCalculator.add("5,1001,1000,3"));
     }
+
+    @Test
+    @DisplayName("test add with long delimiter")
+    void testAddWithLongDelimiter() {
+        assertEquals(6, StringCalculator.add("//[****]\n1****2****3"));
+    }
 }

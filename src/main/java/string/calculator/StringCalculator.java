@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    public static int add(String numbers) {
+    public static int add(String numbers) throws IllegalArgumentException{
         if (numbers.isEmpty()) {
             return 0;
         }
         String delimiter = "[,\n]";
         if (numbers.startsWith("//")) {
             int delimiterEnd = numbers.indexOf('\n');
-            delimiter = Pattern.quote(numbers.substring(2, delimiterEnd));
+            delimiter = Pattern.quote(numbers.substring(3, delimiterEnd - 1));
             numbers = numbers.substring(delimiterEnd + 1);
         }
 
