@@ -79,4 +79,10 @@ public class StringCalculatorTests {
     void testAddWithLongDelimiter() {
         assertEquals(6, StringCalculator.add("//[****]\n1****2****3"));
     }
+
+    @Test
+    @DisplayName("test add with multiple delimiters of different lengths")
+    void testAddWithMultipleDelimitersOfDifferentLengths() {
+        assertEquals(10, StringCalculator.add("//[***][#][%]\n1***2#3%4"));
+    }
 }
