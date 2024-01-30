@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    public static int add(String numbers) throws IllegalArgumentException{
+    public static int add(String numbers) throws IllegalArgumentException {
         if (numbers.isEmpty()) {
             return 0;
         }
@@ -27,16 +27,20 @@ public class StringCalculator {
                 if (number < 0) {
                     negatives.add(number);
                 } else if (number < 1000)
-                sum += number;
+                    sum += number;
             }
         }
         if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("negatives are not allowed: " +negatives);
+            throw new IllegalArgumentException("negatives are not allowed: " + negatives);
         }
         return sum;
     }
 
     private static String buildDelimiterPattern(String delimiterPart) {
+        if (!delimiterPart.startsWith("[")) {
+            return Pattern.quote(delimiterPart);
+        }
+
         Matcher match = Pattern.compile("\\[(.*?)\\]").matcher(delimiterPart);
         List<String> delimiters = new ArrayList<>();
         while (match.find()) {
